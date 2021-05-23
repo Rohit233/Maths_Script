@@ -2,11 +2,8 @@ import numpy as np
 
 from tabulate import tabulate
 
-from stat2helper import tableValuesForStat2, curveType
+from stat2helper import curveType
 
-# tableValuesForStat2 = tableValuesForStat2()
-# tableValuesForStat2.x =np.array([1,2,3,4,5])
-# tableValuesForStat2.y = np.array([14,27,40,55,68])
 
 digitAfterPoint = 5
 
@@ -158,8 +155,3 @@ def showTable(elements, sums):
     print(tabulate(elements, headers='keys', tablefmt='fancy_grid'))
     print(tabulate(sums, headers='keys', tablefmt='fancy_grid'))
 
-
-straightLineTableFormation(tableValuesForStat2)
-# parabolicCurveTableFormation(curveType.parabolicCurveType1)
-# parabolicCurveTableFormation(curveType.parabolicCurveType2)
-# exponentialCurveTableFormation()
