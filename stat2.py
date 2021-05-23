@@ -4,24 +4,24 @@ from tabulate import tabulate
 
 from stat2helper import tableValuesForStat2, curveType
 
-tableValuesForStat2 = tableValuesForStat2()
+# tableValuesForStat2 = tableValuesForStat2()
+# tableValuesForStat2.x =np.array([1,2,3,4,5])
+# tableValuesForStat2.y = np.array([14,27,40,55,68])
 
-tableValuesForStat2.x = np.array([1,5,7,9,12])
-tableValuesForStat2.y = np.array([10,15,12,15,21])
 digitAfterPoint = 5
 
 
-def straightLineTableFormation():
-    tableValuesForStat2.elementsXY = tableValuesForStat2.x * tableValuesForStat2.y
+def straightLineTableFormation(tableValuesForStat2):
+    tableValuesForStat2.elementsXY = np.around(tableValuesForStat2.x * tableValuesForStat2.y,digitAfterPoint)
     tableValuesForStat2.n = len(tableValuesForStat2.x)
-    tableValuesForStat2.elementsXSqr = np.square(tableValuesForStat2.x)
+    tableValuesForStat2.elementsXSqr = np.around(np.square(tableValuesForStat2.x),digitAfterPoint)
     tableValuesForStat2.sumX = np.around(tableValuesForStat2.x.sum(), digitAfterPoint)
     tableValuesForStat2.sumY = np.around(tableValuesForStat2.y.sum(), digitAfterPoint)
     tableValuesForStat2.sumXY = np.around(tableValuesForStat2.elementsXY.sum(), digitAfterPoint)
-    tableValuesForStat2.sumXSqr2 = np.around(tableValuesForStat2.elementsXSqr.sum(), digitAfterPoint)
+    tableValuesForStat2.sumXSqr = np.around(tableValuesForStat2.elementsXSqr.sum(), digitAfterPoint)
     showTable({'X': tableValuesForStat2.x, 'Y': tableValuesForStat2.y, 'XY': tableValuesForStat2.elementsXY, 'X^2': tableValuesForStat2.elementsXSqr},
               {'SumX': [tableValuesForStat2.sumX], 'SumY': [tableValuesForStat2.sumY], 'SumXY': [tableValuesForStat2.sumXY],
-               'SumX^2': [tableValuesForStat2.sumXSqr2]})
+               'SumX^2': [tableValuesForStat2.sumXSqr]})
     getLineFit(tableValuesForStat2,curveType.straightLineCurve)
 
 def findingAndB(solution,constA,constB,constC):
@@ -99,7 +99,7 @@ def getLineFit(tableValuesForStat2,typeOfCurve):
         a = np.around(10**valueOfAndB[0],digitAfterPoint)
         print('y='+str(a)+' e^'+str(b)+'x')
 
-def parabolicCurveTableFormation(type):
+def parabolicCurveTableFormation(type,tableValuesForStat2):
    tableValuesForStat2.n = len(tableValuesForStat2.x)
    tableValuesForStat2.elementsXSqr = np.around(np.square(tableValuesForStat2.x), digitAfterPoint)
    tableValuesForStat2. elementsXCube = np.around(np.power(tableValuesForStat2.x, 3), digitAfterPoint)
@@ -135,7 +135,7 @@ def parabolicCurveTableFormation(type):
                    'SumXY': [tableValuesForStat2.sumXY]})
         getLineFit(tableValuesForStat2,curveType.parabolicCurveType2)
 
-def exponentialCurveTableFormation():
+def exponentialCurveTableFormation(tableValuesForStat2):
     tableValuesForStat2.n = len(tableValuesForStat2.x)
     tableValuesForStat2.elementsXSqr = np.around(np.square(tableValuesForStat2.x), digitAfterPoint)
     tableValuesForStat2.elementlogY = np.around(np.log10(tableValuesForStat2.y), digitAfterPoint)
@@ -159,7 +159,7 @@ def showTable(elements, sums):
     print(tabulate(sums, headers='keys', tablefmt='fancy_grid'))
 
 
-# straightLineTableFormation()
+straightLineTableFormation(tableValuesForStat2)
 # parabolicCurveTableFormation(curveType.parabolicCurveType1)
 # parabolicCurveTableFormation(curveType.parabolicCurveType2)
-exponentialCurveTableFormation()
+# exponentialCurveTableFormation()
