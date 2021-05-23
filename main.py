@@ -3,7 +3,6 @@ import numpy as np
 from stat2helper import curveType, tableValuesForStat2
 from stat2 import straightLineTableFormation, parabolicCurveTableFormation, exponentialCurveTableFormation
 
-print(str(sys.argv[1]))
 x = []
 y = []
 singleValue = str()

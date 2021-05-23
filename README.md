@@ -4,10 +4,37 @@ Equation store:
    [6,21,10]
    
 Running On CommandLine:
-   python3 main.py <CurveType> '<xValues>' '<yvalues>'
-   <CurveType>: 1) straightLineCurve(y = a+bx) <br> 
+   python3 main.py [CurveType] ['xValues'] ['yvalues']
+   CurveType: 1) straightLineCurve(y = a+bx) <br> 
                 2) parabolicCurveType1(y = a+bx^2) <br>
                 3) parabolicCurveType2(y = ax+bx^2) <br>
                 4) exponentialCurve(y = ae^bx)  
-    <xValues> : eg '1,2,4,6'
-    <yValues> : eg '2.4,7.1,1,6'              
+    xValues : eg '1,2,4,6'
+    yValues : eg '2.4,7.1,1,6'
+    
+ Demo:
+   python3 main.py straightLineCurve "1,2,3,4,5,6" "1200,900,600,200,110,50"
+   
+  output: 
+╒═════╤══════╤══════╤═══════╕
+│   X │    Y │   XY │   X^2 │
+╞═════╪══════╪══════╪═══════╡
+│   1 │ 1200 │ 1200 │     1 │
+├─────┼──────┼──────┼───────┤
+│   2 │  900 │ 1800 │     4 │
+├─────┼──────┼──────┼───────┤
+│   3 │  600 │ 1800 │     9 │
+├─────┼──────┼──────┼───────┤
+│   4 │  200 │  800 │    16 │
+├─────┼──────┼──────┼───────┤
+│   5 │  110 │  550 │    25 │
+├─────┼──────┼──────┼───────┤
+│   6 │   50 │  300 │    36 │
+╘═════╧══════╧══════╧═══════╛
+╒════════╤════════╤═════════╤══════════╕
+│   SumX │   SumY │   SumXY │   SumX^2 │
+╞════════╪════════╪═════════╪══════════╡
+│     21 │   3060 │    6450 │       91 │
+╘════════╧════════╧═════════╧══════════╛
+y=1362.0-243.42857x
+            
